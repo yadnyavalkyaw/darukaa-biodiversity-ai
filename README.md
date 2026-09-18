@@ -3,7 +3,7 @@
 > **AI Environmental Scientist delivering multi-metric causal reasoning and evidence-grounded biodiversity restoration recommendations.**  
 > *Developed for the Darukaa.Earth Hackathon Challenge.*
 
-[![CI Pipeline](https://github.com/yadnyavalkyaw/darukaa-biodiversity-intelligence/actions/workflows/ci.yml/badge.svg)](https://github.com/yadnyavalkyaw/darukaa-biodiversity-intelligence/actions)
+[![CI Pipeline](https://github.com/yadnyavalkyaw/darukaa-biodiversity-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/yadnyavalkyaw/darukaa-biodiversity-ai/actions)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg)](LICENSE)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
@@ -190,8 +190,8 @@ Implemented with strict Pydantic v2 schemas (`darukaa.engine.metrics`):
 ### Installation
 ```bash
 # 1. Clone the repository
-git clone https://github.com/yadnyavalkyaw/darukaa-biodiversity-intelligence.git
-cd darukaa-biodiversity-intelligence
+git clone https://github.com/yadnyavalkyaw/darukaa-biodiversity-ai.git
+cd darukaa-biodiversity-ai
 
 # 2. Create virtual environment using uv
 uv venv .venv

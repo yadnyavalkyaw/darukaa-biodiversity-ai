@@ -74,7 +74,7 @@ def build_submission_document(output_path: str) -> None:
 
     p = doc.add_paragraph()
     p.add_run("• GitHub Repository: ").bold = True
-    p.add_run("https://github.com/yadnyavalkyaw/darukaa-biodiversity-intelligence\n")
+    p.add_run("https://github.com/yadnyavalkyaw/darukaa-biodiversity-ai\n")
     p.add_run("• Live Demo URL: ").bold = True
     p.add_run("http://localhost:8000 (Local Dev Server) / Hosted Deployment Endpoint\n")
     p.add_run("• Submission Date: ").bold = True
