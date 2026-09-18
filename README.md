@@ -7,6 +7,10 @@
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg)](LICENSE)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-success.svg)](https://yadnyavalkyaw.github.io/darukaa-biodiversity-ai/)
+
+> 🚀 **Live Interactive Demo**: **[https://yadnyavalkyaw.github.io/darukaa-biodiversity-ai/](https://yadnyavalkyaw.github.io/darukaa-biodiversity-ai/)**  
+> *Zero setup required. Run instant ecological simulations, test multi-turn dialogue, search 12 indexed scientific literature sources, and inspect causal graphs directly in your browser.*
 
 ---
 
