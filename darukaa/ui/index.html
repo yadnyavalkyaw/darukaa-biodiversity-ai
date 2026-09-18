@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Darukaa.Earth | AI Biodiversity Intelligence</title>
+  <meta name="description" content="AI Environmental Scientist delivering multi-metric causal reasoning and evidence-backed biodiversity restoration recommendations." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-container">
+    <!-- Top Navigation Header -->
+    <header class="app-header">
+      <div class="brand-group">
+        <div class="brand-logo">
+          <span class="leaf-icon">🌱</span>
+        </div>
+        <div class="brand-text">
+          <div class="brand-title">Darukaa<span class="accent-dot">.</span>Earth</div>
+          <div class="brand-subtitle">AI Biodiversity & Environmental Intelligence</div>
+        </div>
+      </div>
+      
+      <div class="header-badges">
+        <span class="badge badge-success"><span class="pulse-dot"></span> Causal Reasoner Active</span>
+        <span class="badge badge-outline" id="corpus-count-badge">12 Literature Sources Indexed</span>
+        <button class="btn btn-sm btn-ghost" id="benchmark-btn" title="Load Hackathon Benchmark Case">
+          ⚡ Load Benchmark Case
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="main-content">
+      <!-- Left Panel: Conversational Intelligence -->
+      <section class="panel chat-panel">
+        <div class="panel-header">
+          <div class="panel-title-group">
+            <h2>Ecological Dialogue Agent</h2>
+            <p>Multi-turn conversation with active clarification & parameter tracking</p>
+          </div>
+          <button class="btn btn-sm btn-secondary" id="reset-session-btn" title="Clear memory and start fresh">
+            Reset Context
+          </button>
+        </div>
+
+        <!-- Chat Stream -->
+        <div class="chat-stream" id="chat-stream">
+          <!-- Initial Welcome Message -->
+          <div class="message assistant-message">
+            <div class="message-avatar">🌍</div>
+            <div class="message-content">
+              <div class="message-sender">Darukaa Environmental Scientist</div>
+              <div class="message-body">
+                <p>Welcome to <strong>Darukaa.Earth Biodiversity Intelligence</strong>. I analyze complex ecosystems by linking soil biogeochemistry, climate stress, land management, and biodiversity indicators.</p>
+                <p>Describe your land conditions, or test our system with a query like: <em>"Biodiversity is declining on my land"</em>.</p>
+              </div>
+              <div class="quick-chips">
+                <button class="chip" data-query="Biodiversity is declining on my land">"Biodiversity is declining on my land"</button>
+                <button class="chip" data-query="Soil organic carbon: 0.3%, rainfall: low, crop: monoculture wheat, region: semi-arid">Benchmark: SOC 0.3%, Low Rain, Wheat</button>
+                <button class="chip" data-query="Soil pH is 5.2, organic carbon 0.7%, high nitrogen runoff 120 kg/ha">Acidic Soil with High N Runoff</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chat Input Form -->
+        <form class="chat-input-wrapper" id="chat-form">
+          <input
+            type="text"
+            id="chat-input"
+            class="chat-input"
+            placeholder="Type observations (e.g. 'SOC: 0.3%, rainfall: low, crop: monoculture wheat')..."
+            autocomplete="off"
+          />
+          <button type="submit" class="btn btn-primary" id="send-btn">
+            <span>Send</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+        </form>
+      </section>
+
+      <!-- Right Panel: Scientific Diagnostics & Knowledge Inspector -->
+      <section class="panel diagnostics-panel">
+        <!-- Navigation Tabs -->
+        <div class="tab-bar">
+          <button class="tab-btn active" data-tab="tab-recommendations">🔬 Scientific Recommendations</button>
+          <button class="tab-btn" data-tab="tab-parameters">📊 Environmental State</button>
+          <button class="tab-btn" data-tab="tab-literature">📚 RAG Literature</button>
+          <button class="tab-btn" data-tab="tab-causal">🕸️ Causal Graph</button>
+        </div>
+
+        <!-- Tab 1: Recommendations -->
+        <div class="tab-content active" id="tab-recommendations">
+          <div id="results-empty" class="empty-state">
+            <div class="empty-icon">🌱</div>
+            <h3>No Active Diagnostic Generated Yet</h3>
+            <p>Send a message or click <strong>Load Benchmark Case</strong> to evaluate multi-metric causal pathways.</p>
+          </div>
+
+          <div id="results-container" class="results-container hidden">
+            <!-- Parcel Summary Banner -->
+            <div class="parcel-banner" id="parcel-banner">
+              <div class="banner-title" id="banner-summary">Diagnostic Complete</div>
+              <div class="banner-meta" id="banner-meta">4 Connected Variables Evaluated</div>
+            </div>
+
+            <!-- Vulnerabilities Section -->
+            <div class="vulnerabilities-box" id="vulnerabilities-box">
+              <h4>⚠️ Critical Ecological Vulnerabilities</h4>
+              <ul id="vulnerabilities-list"></ul>
+            </div>
+
+            <!-- Recommendations Container -->
+            <div id="recommendations-list" class="recommendations-list"></div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Environmental State Parameters -->
+        <div class="tab-content" id="tab-parameters">
+          <div class="params-header">
+            <h3>Active Land Parcel Parameters</h3>
+            <p>Parameters parsed from conversational turns and accumulated in session memory.</p>
+          </div>
+
+          <div class="params-grid">
+            <div class="param-card">
+              <div class="param-label">Soil Organic Carbon (SOC)</div>
+              <div class="param-val" id="param-soc">—</div>
+              <div class="param-sub">Target: &gt; 1.5%</div>
+            </div>
+            <div class="param-card">
+              <div class="param-label">Soil pH</div>
+              <div class="param-val" id="param-ph">—</div>
+              <div class="param-sub">Optimum: 6.2 - 7.3</div>
+            </div>
+            <div class="param-card">
+              <div class="param-label">Precipitation Regime</div>
+              <div class="param-val" id="param-rainfall">—</div>
+              <div class="param-sub">Annual Rainfall mm</div>
+            </div>
+            <div class="param-card">
+              <div class="param-label">Cropping System</div>
+              <div class="param-val" id="param-crop">—</div>
+              <div class="param-sub">Monoculture vs Polyculture</div>
+            </div>
+            <div class="param-card">
+              <div class="param-label">Ecoregion / Climate</div>
+              <div class="param-val" id="param-region">—</div>
+              <div class="param-sub">Köppen Classification</div>
+            </div>
+            <div class="param-card">
+              <div class="param-label">Active Variables</div>
+              <div class="param-val" id="param-active-count">0</div>
+              <div class="param-sub">Minimum 3 Required</div>
+            </div>
+          </div>
+
+          <div class="param-manual-form">
+            <h4>Quick Override / Manual Simulation</h4>
+            <div class="form-row">
+              <input type="number" step="0.1" id="input-soc" placeholder="SOC % (e.g. 0.3)" />
+              <input type="number" step="0.1" id="input-ph" placeholder="Soil pH (e.g. 6.8)" />
+              <input type="number" id="input-rainfall" placeholder="Rainfall mm (e.g. 350)" />
+            </div>
+            <div class="form-row">
+              <input type="text" id="input-crop" placeholder="Crop (e.g. monoculture wheat)" />
+              <input type="text" id="input-region" placeholder="Region (e.g. semi-arid)" />
+              <button class="btn btn-secondary" id="apply-manual-btn">Update & Reason</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: RAG Literature Inspector -->
+        <div class="tab-content" id="tab-literature">
+          <div class="literature-header">
+            <h3>Retrievable Scientific Knowledge Base</h3>
+            <p>Peer-reviewed corpora from FAO, IPCC AR6, IPBES, IUCN, and Science/Nature studies.</p>
+            <div class="search-box">
+              <input type="text" id="lit-search-input" placeholder="Search indexed literature (e.g. 'soil organic carbon fao water capacity')..." />
+              <button class="btn btn-sm btn-primary" id="lit-search-btn">Search Corpus</button>
+            </div>
+          </div>
+          <div class="literature-results" id="literature-results">
+            <!-- Results dynamically inserted here -->
+          </div>
+        </div>
+
+        <!-- Tab 4: Causal Graph Explorer -->
+        <div class="tab-content" id="tab-causal">
+          <div class="causal-header">
+            <h3>Ecological Causal Interactions</h3>
+            <p>Direct dependencies and biogeochemical transfer functions governing multi-metric reasoning.</p>
+          </div>
+          <div class="causal-edges-container" id="causal-edges-container">
+            <!-- Dynamic edges loaded via API -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <div>Darukaa.Earth AI Biodiversity Intelligence &bull; Hackathon Submission System</div>
+      <div class="footer-links">
+        <span>Scientific Grounding: <strong>FAO, IPCC, IPBES, IUCN</strong></span>
+        <span>&bull;</span>
+        <span>Multi-Metric Reasoning Engine</span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
