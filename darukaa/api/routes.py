@@ -20,6 +20,7 @@ from darukaa.engine import (
     EnvironmentalState,
     ScientificAnalysisResult,
 )
+from darukaa.engine.llm_client import OpenRouterLLMClient
 from darukaa.knowledge import KnowledgeRetriever
 from darukaa.spatial import GeoSpatialContext, SpatialContextResolver
 
@@ -33,6 +34,7 @@ causal_graph = EcologicalCausalGraph()
 retriever = KnowledgeRetriever()
 reasoner = EnvironmentalReasoner(causal_graph=causal_graph, retriever=retriever)
 spatial_resolver = SpatialContextResolver()
+llm_client = OpenRouterLLMClient()
 
 
 @router.post("/chat", response_model=ChatResponse)
@@ -74,30 +76,11 @@ async def chat_turn(payload: ChatRequest) -> ChatResponse:
     # 4. Synthesize multi-variable scientific reasoning
     result = reasoner.analyze(session.accumulated_state)
 
-    # Formulate rich conversational reply summarizing the diagnostic findings
-    reply_paragraphs = [
-        "### 🔬 Scientific Agroecological Diagnostic",
-        f"**Parcel Diagnosis**: {result.parcel_summary}",
-        "",
-        "**Connected Variables Analyzed**:",
-    ]
-    for var in result.variable_connections:
-        reply_paragraphs.append(f"- {var}")
-
-    reply_paragraphs.append("")
-    reply_paragraphs.append(
-        f"**Identified Vulnerabilities ({len(result.critical_vulnerabilities)})**:"
+    # Formulate rich conversational reply using LLM (if key provided) or deterministic scientific synthesis
+    history = [{"role": t.role, "content": t.content} for t in session.turns]
+    full_reply = llm_client.synthesize_conversational_response(
+        payload.message, result, conversation_history=history
     )
-    for vuln in result.critical_vulnerabilities:
-        reply_paragraphs.append(f"- ⚠️ {vuln}")
-
-    reply_paragraphs.append("")
-    reply_paragraphs.append(
-        f"We have generated **{len(result.recommendations)} evidence-backed intervention pathways** "
-        f"with quantified multi-metric impacts and authoritative citations (FAO, IPCC, IPBES)."
-    )
-
-    full_reply = "\n".join(reply_paragraphs)
     session.add_assistant_turn(full_reply)
 
     return ChatResponse(
